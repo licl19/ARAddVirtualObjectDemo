@@ -39,10 +39,12 @@ class ARSCNViewViewController: UIViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //1.使用场景加载scn文件（scn格式文件是一个基于3D建模的文件，使用3DMax软件可以创建，这里系统有一个默认的3D飞机）--------在右侧我添加了许多3D模型，只需要替换文件名即可
-        let scene = SCNScene.init(named: "Models.scnassets/ship.scn")
+        let scene = SCNScene.init(named: "Models.scnassets/chair/chair.scn")
         //2.获取飞机节点（一个场景会有多个节点，此处我们只写，飞机节点则默认是场景子节点的第一个）
         //所有的场景有且只有一个根节点，其他所有节点都是根节点的子节点
         let shipNode = scene?.rootNode.childNodes[0]
+        //调整位置
+        shipNode?.position = SCNVector3.init(0, -1, -1)
         //3.将飞机节点添加到当前屏幕中
         arSCNView.scene.rootNode.addChildNode(shipNode!)
     }
